@@ -1,0 +1,25 @@
+# PHP dependencies
+/vendor/
+composer.lock
+
+# Tooling cache
+.phpcs-cache
+.phpunit.cache/
+.php-cs-fixer.cache
+.phpunit.result.cache
+
+# Coverage and reports
+build/
+reports/
+coverage/
+infection.log
+
+# Editors and agents
+.idea/
+.cursor/
+.vscode/
+
+# OS
+Thumbs.db
+.DS_Store
+Desktop.ini
