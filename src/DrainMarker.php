@@ -7,9 +7,10 @@ namespace TinyBlocks\HttpHealthCheck;
 /**
  * Filesystem drain signal: while the watched file exists, readiness reports UNAVAILABLE.
  *
- * <p>The presence probe opens the file instead of relying on <code>is_file</code> so the result is
- * unaffected by PHP's stat cache, which would otherwise keep reporting a removed marker as present
- * inside long-running processes.</p>
+ * <p>The presence probe clears PHP's stat cache before checking existence, so a marker removed
+ * inside a long-running process is not reported as still present. It uses <code>file_exists</code>,
+ * which reports a present marker even when the process cannot open it for reading, so an unreadable
+ * marker still signals draining.</p>
  */
 final readonly class DrainMarker
 {
@@ -47,14 +48,6 @@ final readonly class DrainMarker
      */
     public function isDraining(): bool
     {
-        $handle = @fopen($this->path, 'r');
-
-        if ($handle === false) {
-            return false;
-        }
-
-        fclose($handle);
-
-        return true;
+        return file_exists($this->path);
     }
 }
