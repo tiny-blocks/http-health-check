@@ -1,0 +1,11 @@
+parameters:
+    level: max
+    paths:
+        - src
+        - tests
+    ignoreErrors:
+        # The mapped checks collection feeds the typed DependencyHealths sink; the value type is widened
+        # at this internal boundary, and PHPDoc is prohibited on Internal collaborators.
+        - identifier: argument.type
+          path: src/Internal/Assessment.php
+    reportUnmatchedIgnoredErrors: true
