@@ -28,7 +28,7 @@
         "psr/http-message": "^2.0",
         "psr/http-server-handler": "^1.0",
         "tiny-blocks/collection": "^2.5",
-        "tiny-blocks/http": "^6.2",
+        "tiny-blocks/http": "^6.3",
         "tiny-blocks/time": "^2.3"
     },
     "require-dev": {
