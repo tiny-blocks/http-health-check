@@ -39,7 +39,7 @@ final readonly class DoctrineHealthCheck implements HealthCheck
     public function check(): Health
     {
         try {
-            $query = $this->query ?? $this->connection->getDatabasePlatform()->getDummySelectSQL();
+            $query = ($this->query ?? $this->connection->getDatabasePlatform()->getDummySelectSQL());
             $this->connection->executeQuery($query);
 
             return Health::up();
