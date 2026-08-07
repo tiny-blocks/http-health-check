@@ -21,7 +21,7 @@ final class MonotonicClockFake implements MonotonicClock
 
     public function nanoseconds(): int
     {
-        $reading = $this->reads * $this->step;
+        $reading = ($this->reads * $this->step);
         $this->reads++;
 
         return $reading;
